@@ -23,14 +23,16 @@ const allTYpes = ['AGREE_OR_ELSE', 'OUT_OF_FIVE', 'OPEN_ENDED'];
           user: uniqueNamesGenerator({
             dictionaries: [names]
           }),
-          answer: randomType == Type.OPEN_ENDED.toString()
+          answer: randomType == 'OPEN_ENDED'
             ? loremIpsum({sentenceUpperBound: 10}) : undefined,
-          mark: randomType == Type.AGREE_OR_ELSE.toString()
+          mark: randomType == 'AGREE_OR_ELSE'
             ? Math.random() < 0.5
-            :  randomType == Type.OUT_OF_FIVE.toString()
+            :  randomType == 'OUT_OF_FIVE'
               ? Math.floor(Math.random() * 5)
               : undefined,
-          completedAt: new Date().toISOString(),
+          completedAt: new Date(
+            new Date('2024-06-01').getTime() + Math.random() *
+            (new Date('2024-12-01').getTime() - new Date('2024-06-01').getTime())),
         }
       }
     )

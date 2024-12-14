@@ -14,6 +14,16 @@ export interface AnswerData {
   readonly completedAt?: Date | string
 }
 
+export interface PieChartDataDataset {
+  backgroundColor: string[]
+  data: number[]
+}
+
+export interface PieChartData {
+  labels: string[]
+  datasets: PieChartDataDataset[]
+}
+
 // Business Logic Entities:
 // actual Entities, "derived" from data we receive from API
 export interface AnswerInterface extends AnswerData {

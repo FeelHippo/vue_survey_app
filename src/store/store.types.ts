@@ -8,6 +8,8 @@ export interface SurveyRootState {
 export interface SurveyState extends SurveyRootState {
   questions: AnswerData[]
   answers: AnswerData[]
+  dateFrom: Date | string
+  dateTo: Date | string
 }
 
 export type SurveyStore = Store<'survey', SurveyState>

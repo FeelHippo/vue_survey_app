@@ -1,5 +1,5 @@
 import type { AnswerData } from '@/entity/answer.types'
-import { type SurveyActions, type Context } from './actions.types'
+import { type SurveyActions } from './actions.types'
 import type { Store } from 'pinia'
 import type { SurveyState } from '../store.types'
 
@@ -24,7 +24,7 @@ export const actions: SurveyActions = {
     this.survey.postAllAnswers(this.answers)
   },
   /// adds a newly created answer to the store
-  createAnswer(this: Store<'survey', SurveyState>, context: Context, payload: AnswerData): void {
+  createAnswer(this: Store<'survey', SurveyState>, payload: AnswerData): void {
     this.answers.push({
       ...payload,
     })
@@ -32,7 +32,6 @@ export const actions: SurveyActions = {
   /// add a new question to the store
   createQuestion(
     this: Store<'survey', SurveyState>,
-    context: Context,
     payload: AnswerData,
   ): void {
     const { id, type, title, description } = payload

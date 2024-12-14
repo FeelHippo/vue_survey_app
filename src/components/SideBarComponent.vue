@@ -1,5 +1,21 @@
 <template>
-  <sidebar-menu :menu="menu" />
+  <v-navigation-drawer>
+    <v-list-item title="Survey Application" subtitle="Dashboard"></v-list-item>
+    <v-divider></v-divider>
+    <v-list-item
+      v-for="(item,i) in menu"
+      :value="item" :key="i"
+      link @click="$router.push({ path: item.href })"
+    >
+      <template #prepend>
+        <v-icon v-if="item.icon" :icon="item.icon"></v-icon>
+      </template>
+      <v-list-item-content>
+        <v-list-item-title>{{item.title}}</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    <v-divider></v-divider>
+  </v-navigation-drawer>
 </template>
 
 <script lang="ts">
@@ -9,32 +25,26 @@
       return {
         menu: [
           {
-            header: 'Survey App',
-            hiddenOnCollapse: true,
-          },
-          {
             href: '/',
             title: 'Dashboard',
-            icon: 'mdi mdi-cog',
+            icon: 'mdi mdi-home',
           },
           {
             href: '/view-stats',
             title: 'Stats',
-            icon: 'mdi mdi-cog',
-            child: [
-              {
-                href: '/view-stats/agree-survey',
-                title: 'Agree or Else Survey',
-              },
-              {
-                href: '/view-stats/best-survey',
-                title: 'Best of Five Survey',
-              },
-              {
-                href: '/view-stats/open-survey',
-                title: 'Open Ended Survey',
-              },
-            ],
+            icon: 'mdi mdi-list-status',
+          },
+          {
+            href: '/view-stats/agree-survey',
+            title: 'Agree or Else Survey',
+          },
+          {
+            href: '/view-stats/best-survey',
+            title: 'Best of Five Survey',
+          },
+          {
+            href: '/view-stats/open-survey',
+            title: 'Open Ended Survey',
           },
         ],
       }
