@@ -3,14 +3,14 @@
 // Application Business Rules. e.g data to/from API's:
 export interface AnswerData {
   // define question
-  readonly id: number
-  readonly type: Type
+  readonly id: string
+  readonly type: Type | string
   readonly title: string
   readonly description?: string
   // define answer
   readonly user?: string;
   readonly answer?: string
-  readonly mark?: number
+  readonly mark?: number | boolean
   readonly completedAt?: Date | string
 }
 

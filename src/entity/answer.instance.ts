@@ -8,14 +8,14 @@ import {
 
 export class Answer implements AnswerInterface {
   // define question
-  readonly id: number
-  readonly type: Type
+  readonly id: string
+  readonly type: Type | string
   readonly title: string
   readonly description?: string
   // define answer
   readonly user?: string;
   readonly answer?: string
-  readonly mark?: number
+  readonly mark?: number | boolean
   readonly completedAt?: Date | string
 
   constructor(data: AnswerData) {
