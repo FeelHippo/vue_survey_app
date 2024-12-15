@@ -34,7 +34,7 @@
       <v-row style="height: 50%;">
         <v-col align="center" justify="center">
           <v-tabs v-model="state.currentTab" style="width: 50%;" class="px-4">
-            <v-tab v-for="(tab, i) in state.tabs" :key="i.id">
+            <v-tab v-for="(tab, i) in state.tabs" :key="tab.id">
               <div class="caption py-1">{{ i + 1 }}/{{ state.tabs.length }}</div>
             </v-tab>
           </v-tabs>
@@ -42,7 +42,7 @@
             <v-tabs-window v-model="state.currentTab">
               <v-tabs-window-item
                 v-for="(question, i) in state.tabs"
-                :key="i.id"
+                :key="question.id"
               >
                 <v-row>
                   <v-col style="width: 50%;">
@@ -104,11 +104,12 @@
       </v-row>
       <v-row style="height: 50%;">
         <v-col align="center" justify="center">
-          <v-dialog :value="state.isTryItNow" min-width="400px">
+          <v-dialog min-width="400px">
             <template #activator="{ props: activatorProp }" >
               <v-btn
                 color="secondary"
                 v-bind="activatorProp"
+                :disabled="v.$invalid"
               >
                 Try it Now!
               </v-btn>
@@ -120,8 +121,8 @@
                 class="mb-8"
               >
                 <v-slide-group-item
-                  v-for="(tab, i) in state.tabs"
-                  :key="i.id"
+                  v-for="tab in state.tabs"
+                  :key="tab.id"
                 >
                   <v-card
                     height="400"
@@ -133,7 +134,7 @@
                     <v-img
                       color="surface-variant"
                       height="50%"
-                      :src="staticAssetMap[tab.type]"
+                      :src="staticAssetMap(tab.type)"
                       cover
                     />
                     <v-card-title>
@@ -200,7 +201,7 @@ import { computed, reactive, ref } from 'vue'
 import { uid } from 'uid';
 import { helpers, required } from '@vuelidate/validators'
 import { useVuelidate } from '@vuelidate/core'
-import { AnswerData } from '../entity/answer.types';
+import type { AnswerData } from '../entity/answer.types';
 
 export default {
   setup() {
@@ -236,11 +237,13 @@ export default {
       }
     }
 
-    const staticAssetMap = {
+    const assetMap = {
       'AGREE_OR_ELSE': '/first.png',
       'OUT_OF_FIVE': '/second.png',
       'OPEN_ENDED': '/third.png',
     }
+
+    const staticAssetMap = (type: string) => assetMap[type];
 
     const slider = ref(0)
     const sliderColor = computed(() => ['red', 'orange', 'yellow', 'blue', 'green'][slider.value])

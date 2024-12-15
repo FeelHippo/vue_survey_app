@@ -19,12 +19,12 @@ const store = useSurveyStore()
 
 export default {
   components: {
-    [VueWordCloud.name]: VueWordCloud,
+    [VueWordCloud.name as string]: VueWordCloud,
   },
   setup() {
     const data = store.aggregateOpenAnswersData
     const options =
-      ([, weight]) => weight > 20 ? colorPalette.primary : colorPalette.secondary
+      ([, weight]: [unknown, number]) => weight > 20 ? colorPalette.primary : colorPalette.secondary
     return {
       data,
       options,
