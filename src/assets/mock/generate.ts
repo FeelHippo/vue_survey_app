@@ -2,7 +2,6 @@ import {promises as fs} from 'fs';
 import { uid } from 'uid';
 import { loremIpsum } from "lorem-ipsum";
 import { uniqueNamesGenerator, names } from 'unique-names-generator';
-import { Type } from '../../entity/answer.types';
 
 // IMPORTANT: run with npx tsx .\src\assets\mock\generate.ts
 

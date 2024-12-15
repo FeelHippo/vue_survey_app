@@ -9,8 +9,6 @@ export const useSurveyStore = defineStore(
       version: 1,
       questions: [],
       answers: [],
-      dateFrom: new Date('2024-01-01'),
-      dateTo: new Date(),
     }),
     getters,
     actions,

@@ -5,14 +5,12 @@
     <v-list-item
       v-for="(item,i) in menu"
       :value="item" :key="i"
+      :title="item.title"
       link @click="$router.push({ path: item.href })"
     >
       <template #prepend>
         <v-icon v-if="item.icon" :icon="item.icon"></v-icon>
       </template>
-      <v-list-item-content>
-        <v-list-item-title>{{item.title}}</v-list-item-title>
-      </v-list-item-content>
     </v-list-item>
     <v-divider></v-divider>
   </v-navigation-drawer>

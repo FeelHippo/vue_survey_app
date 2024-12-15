@@ -24,6 +24,21 @@ export interface PieChartData {
   datasets: PieChartDataDataset[]
 }
 
+export interface PolarChartDataDataset {
+  label: string
+  backgroundColor: string
+  pointBackgroundColor: string
+  pointBorderColor: string
+  pointHoverBackgroundColor: string
+  pointHoverBorderColor: string
+  data: number[]
+}
+
+export interface PolarChartData {
+  labels: string[]
+  datasets: PolarChartDataDataset[]
+}
+
 // Business Logic Entities:
 // actual Entities, "derived" from data we receive from API
 export interface AnswerInterface extends AnswerData {

@@ -1,11 +1,11 @@
 <template>
   <v-app>
-    <v-layout>
-      <navigation-drawer />
-      <v-main>
-        <router-view />
-      </v-main>
-    </v-layout>
+    <navigation-drawer />
+    <v-main
+      style="height: 100vh; width: 100vw;"
+    >
+      <router-view />
+    </v-main>
   </v-app>
 </template>
 
