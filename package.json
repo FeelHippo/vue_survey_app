@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "@iconify/vue": "^4.2.0",
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.4",
     "chart.js": "^4.4.7",
     "lorem-ipsum": "^2.0.8",
     "material-design-icons-iconfont": "^6.7.0",

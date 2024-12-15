@@ -1,5 +1,5 @@
 <template>
-  <v-container fill-height justify-center align-center>
+  <v-container fill-height justify-center align-center :class="path === '/view-stats' && 'hero'">
     <v-col style="height: 100vh;">
       <v-row style="height: 25%;">
         <v-col align="center" justify="center">
@@ -15,10 +15,27 @@
   </v-container>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { useSurveyStore } from '../store/store.instance';
+import { useRoute } from 'vue-router'
+import { computed } from 'vue';
 
 const store = useSurveyStore()
 store.fetchSurveyAnswers()
+
+const route=useRoute();
+const path = computed(() => route.path)
+
 </script>
+
+<style scoped>
+.v-sheet {
+  background: transparent;
+}
+.hero {
+  background: url('../../public/stats.png');
+  background-size: cover;
+  height: 100vh;
+}
+</style>
 

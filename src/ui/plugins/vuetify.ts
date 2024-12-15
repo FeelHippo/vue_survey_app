@@ -4,6 +4,7 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { md3 } from 'vuetify/blueprints'
 import 'vuetify/styles'
+import { colorPalette } from '@/utils/colors'
 
 export default createVuetify({
   components,
@@ -12,4 +13,16 @@ export default createVuetify({
   icons: {
     defaultSet: 'mdi',
   },
+  theme: {
+    themes: {
+      light: {
+        dark: false,
+        colors: {
+          primary: colorPalette.primary,
+          secondary: colorPalette.secondary,
+          error: colorPalette.error,
+        }
+      }
+    }
+  }
 })

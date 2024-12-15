@@ -30,18 +30,20 @@ export const actions: SurveyActions = {
     })
   },
   /// add a new question to the store
-  createQuestion(
+  createQuestions(
     this: Store<'survey', SurveyState>,
-    payload: AnswerData,
+    payload: AnswerData[],
   ): void {
-    const { id, type, title, description } = payload
-    this.questions.push({
-      id,
-      type,
-      title,
-      ...(
-        description && { description }
-      ),
+    payload.forEach((question) => {
+      const { id, type, title, description } = question
+      this.questions.push({
+        id,
+        type,
+        title,
+        ...(
+          description && { description }
+        ),
+      })
     })
   },
 }
