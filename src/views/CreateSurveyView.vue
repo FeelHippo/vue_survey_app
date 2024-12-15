@@ -243,7 +243,7 @@ export default {
       'OPEN_ENDED': '/third.png',
     }
 
-    const staticAssetMap = (type: string) => assetMap[type];
+    const staticAssetMap = (type: string): string => assetMap[type];
 
     const slider = ref(0)
     const sliderColor = computed(() => ['red', 'orange', 'yellow', 'blue', 'green'][slider.value])
