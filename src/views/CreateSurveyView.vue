@@ -121,7 +121,7 @@
                 class="mb-8"
               >
                 <v-slide-group-item
-                  v-for="tab in state.tabs"
+                  v-for="(tab, i) in state.tabs"
                   :key="tab.id"
                 >
                   <v-card
@@ -134,7 +134,7 @@
                     <v-img
                       color="surface-variant"
                       height="50%"
-                      :src="staticAssetMap(tab.type)"
+                      :src="['/first.png', '/second.png', '/third.png'][i]"
                       cover
                     />
                     <v-card-title>
@@ -237,14 +237,6 @@ export default {
       }
     }
 
-    const assetMap = {
-      'AGREE_OR_ELSE': '/first.png',
-      'OUT_OF_FIVE': '/second.png',
-      'OPEN_ENDED': '/third.png',
-    }
-
-    const staticAssetMap = (type: string): string => assetMap[type];
-
     const slider = ref(0)
     const sliderColor = computed(() => ['red', 'orange', 'yellow', 'blue', 'green'][slider.value])
     const openAnswer = ref('')
@@ -258,7 +250,6 @@ export default {
         { title: 'Open Answer', value: 'OPEN_ENDED' },
       ],
       validateAndSaveAndNavigate,
-      staticAssetMap,
       slider,
       sliderColor,
       openAnswer,

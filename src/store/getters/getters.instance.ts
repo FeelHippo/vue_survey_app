@@ -1,5 +1,5 @@
 import type { Store } from 'pinia'
-import { type AnswerData, type PieChartData, type PolarChartData } from '@/entity/answer.types'
+import { type AnswerData, type PieChartData, type PolarChartData, type WordCloudData } from '@/entity/answer.types'
 import type { SurveyGetters } from './getters.types'
 import { Answer } from '@/entity/answer.instance'
 import type { SurveyState } from '../store.types'
@@ -81,20 +81,23 @@ export const getters: SurveyGetters = {
     }
   },
   // format data for OPEN_ENDED
-  aggregateOpenAnswersData(this: Store<'survey', SurveyState>): (string | number)[][] {
+  aggregateOpenAnswersData(this: Store<'survey', SurveyState>): WordCloudData {
     const dataSet =
       this
       .answers
       .filter(
-        (answer) => answer.type == 'OPEN_ENDED'
-      ).map((answer) => answer.answer)
-    return [...Array(10)]
+        ({type, title, user, answer }) => type == 'OPEN_ENDED'
+          && !!title
+          && !!user
+          && !!answer,
+      )
+    return dataSet.slice(0, 10)
       .map(
-        () =>
-          [
-            dataSet[~~(dataSet.length * Math.random())],
-            Math.random() * (36 - 8) + 8
-          ]
-        ) as (string | number)[][]
+        ({ title, answer, user }) => ({
+          title,
+          answer,
+          user,
+        })
+      ) as WordCloudData
   }
 }

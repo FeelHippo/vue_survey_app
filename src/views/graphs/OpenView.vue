@@ -1,33 +1,33 @@
 <template>
-  <vue-word-cloud
-    style="
-      height: 480px;
-      width: 50%;
-      margin: 0 auto;
-    "
-    :words="data"
-    :color="options"
-  />
+  <v-container fill-height justify-center align-center>
+    <v-col align="center" justify="center">
+      <v-timeline>
+        <v-timeline-item v-for="(answer, i) in data" :key="i" size="large">
+          <template #icon>
+            <v-avatar color="secondary" class="text-h5">{{ answer.user[0]! }}</v-avatar>
+          </template>
+          <v-card class="elevation-2">
+            <v-card-title class="text-h5">
+              {{ answer.title }}
+            </v-card-title>
+            <v-card-text>{{ answer.answer }}</v-card-text>
+          </v-card>
+        </v-timeline-item>
+      </v-timeline>
+    </v-col>
+  </v-container>
 </template>
 
 <script lang="ts">
-import VueWordCloud from 'vuewordcloud';
 import { useSurveyStore } from '../../store/store.instance';
-import { colorPalette } from '../../utils/colors';
 
 const store = useSurveyStore()
 
 export default {
-  components: {
-    [VueWordCloud.name as string]: VueWordCloud,
-  },
   setup() {
     const data = store.aggregateOpenAnswersData
-    const options =
-      ([, weight]: [unknown, number]) => weight > 20 ? colorPalette.primary : colorPalette.secondary
     return {
       data,
-      options,
     }
   },
 }

@@ -28,8 +28,7 @@
     "vue-router": "^4.4.5",
     "vue-sidebar-menu": "^5.4.2",
     "vuelidate": "^0.7.7",
-    "vuetify": "^3.7.5",
-    "vuewordcloud": "^19.0.0"
+    "vuetify": "^3.7.5"
   },
   "devDependencies": {
     "@gearbox-solutions/eslint-config-gbx": "^2.0.5",

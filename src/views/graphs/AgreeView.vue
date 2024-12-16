@@ -12,7 +12,7 @@ const store = useSurveyStore()
 ChartJS.register(ArcElement, Tooltip, Legend)
 
 export default {
-  components: { Pie },
+  components: { Pie } as { Pie: typeof Pie },
   setup() {
     const data = store.aggregateBinaryAnswersData
     const options = {

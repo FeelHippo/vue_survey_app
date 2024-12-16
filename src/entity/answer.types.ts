@@ -39,6 +39,12 @@ export interface PolarChartData {
   datasets: PolarChartDataDataset[]
 }
 
+export type WordCloudData = {
+  title: string;
+  answer: string;
+  user: string;
+}[]
+
 // Business Logic Entities:
 // actual Entities, "derived" from data we receive from API
 export interface AnswerInterface extends AnswerData {

@@ -12,7 +12,7 @@ const store = useSurveyStore()
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend)
 
 export default {
-  components: { PolarArea },
+  components: { PolarArea } as { PolarArea: typeof PolarArea },
   setup() {
     const data = store.aggregateRangeAnswersData
     const options = {
