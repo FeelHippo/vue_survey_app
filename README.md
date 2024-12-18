@@ -37,3 +37,6 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Amplify Deployment
+[See it in action](https://main.d29cs7404w4bfm.amplifyapp.com/)
